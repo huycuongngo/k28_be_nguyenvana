@@ -16,8 +16,8 @@ app.use('/api/v1/movies', movieRoutes)
 mongoose.connect(process.env.DB_URI, { dbName: 'demo_db' })
   .then(() => {
     console.log('Connected to DB');
-    app.listen(4000, () => {
-      console.log('Server is running on port 4000');
+    app.listen(process.env.PORT, () => {
+      console.log(`Server is running on port ${process.env.PORT}`);
     })
   })
   .catch((err) => {
