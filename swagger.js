@@ -27,9 +27,11 @@ const options = {
         }
       }
     },
-    security: {
-      bearerAuth: []
-    }
+    security: [
+      {
+        bearerAuth: []
+      }
+    ]
   },
   apis: [
     './routes/userRoutes.js',
@@ -39,3 +41,4 @@ const options = {
 
 const swaggerSpec = swaggerJSDoc(options)
 
+export default swaggerSpec

@@ -4,6 +4,8 @@ import cors from 'cors'
 import dotenv from 'dotenv'
 import { userRoutes } from './routes/userRoutes.js';
 import { movieRoutes } from './routes/movieRoutes.js';
+import swaggerUi from 'swagger-ui-express'
+import swaggerSpec from './swagger.js'
 
 const app = express()
 app.use(cors())
@@ -12,6 +14,7 @@ dotenv.config()
 
 app.use('/api/v1/auth', userRoutes)
 app.use('/api/v1/movies', movieRoutes)
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerSpec))
 
 mongoose.connect(process.env.DB_URI, { dbName: 'demo_db' })
   .then(() => {
