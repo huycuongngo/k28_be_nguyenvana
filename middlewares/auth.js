@@ -26,3 +26,12 @@ export const authAdmin = (req, res, next) => {
   }
   next()
 }
+
+export const verifyJWT = (token) => {
+  if (token) {
+    const { user } = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET_KEY)
+    return user
+  } else {
+    return null
+  }
+}
